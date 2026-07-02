@@ -804,14 +804,13 @@
           <span class="v"><a href="https://github.com/neeraj-kn" target="_blank">github.com/neeraj-kn</a></span>
         </div>
       </div>
-      <form
-    class="contact-form reveal"
-    id="contactForm"
-    action="https://formspree.io/f/mkolpnnk"
-    method="POST">
-        <input type="text" placeholder="Name" required>
-        <input type="email" placeholder="Email" required>
-        <textarea placeholder="Message" required></textarea>
+      <form class="contact-form reveal"
+      id="contactForm"
+      action="https://formspree.io/f/mkolpnnk"
+      method="POST">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Message" required></textarea>
         <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send Message</button>
         <span class="form-note">// wire this to Formspree, Resend, or a serverless function once hosted</span>
       </form>
@@ -912,11 +911,28 @@
   overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeModal(); });
   document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
 
-  // contact form placeholder submit
-  document.getElementById('contactForm').addEventListener('submit', function(e){
+  // Formspree contact form
+  document.getElementById("contactForm").addEventListener("submit", async function(e) {
     e.preventDefault();
-    alert('Form submission placeholder — connect this to Formspree, Resend, or a serverless endpoint once deployed.');
+    const form=this;
+    const data=new FormData(form);
+    try{
+      const response=await fetch(form.action,{
+        method:"POST",
+        body:data,
+        headers:{"Accept":"application/json"}
+      });
+      if(response.ok){
+        alert("✅ Thank you! Your message has been sent successfully.");
+        form.reset();
+      }else{
+        alert("❌ Failed to send your message. Please try again.");
+      }
+    }catch(err){
+      alert("❌ Something went wrong. Please try again.");
+    }
   });
+
 </script>
 
 </body>
