@@ -3,388 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neeraj Nandan — AI-Assisted Digital Solutions Builder</title>
-<meta name="description" content="Neeraj Nandan — I build useful digital products with AI. Commerce student, builder, problem solver.">
+<title>Neeraj Nandan — AI-Assisted Digital Products Builder</title>
+<meta name="description" content="Neeraj Nandan builds fast, private, browser-based tools with AI — Image Suite, PDF Suite, QR Generator — and is developing TREND, a fixed-supply token on BNB Smart Chain.">
+<link rel="canonical" href="https://neerajnandan.com/">
 
-<link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="assets/favicon-64.png" sizes="64x64">
-<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Neeraj Nandan — AI-Assisted Digital Solutions Builder">
-<meta property="og:description" content="I build useful digital products with AI. Commerce student, builder, problem solver.">
-<meta property="og:image" content="assets/og-image.jpg">
+<meta property="og:url" content="https://neerajnandan.com/">
+<meta property="og:title" content="Neeraj Nandan — AI-Assisted Digital Products Builder">
+<meta property="og:description" content="I build useful, private, browser-based tools with AI. Explore Image Suite, PDF Suite, and QR Generator.">
+<meta property="og:image" content="https://neerajnandan.com/assets/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Neeraj Nandan — AI-Assisted Digital Solutions Builder">
-<meta name="twitter:description" content="I build useful digital products with AI.">
-<meta name="twitter:image" content="assets/og-image.jpg">
+<meta name="twitter:title" content="Neeraj Nandan — AI-Assisted Digital Products Builder">
+<meta name="twitter:description" content="I build useful, private, browser-based tools with AI.">
+<meta name="twitter:image" content="https://neerajnandan.com/assets/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Neeraj Nandan",
+  "url": "https://neerajnandan.com/",
+  "jobTitle": "AI-Assisted Digital Products Builder",
+  "sameAs": [
+    "https://www.linkedin.com/in/neeraj-kn",
+    "https://github.com/neeraj-kn"
+  ],
+  "knowsAbout": ["Web Development", "Artificial Intelligence", "Blockchain", "Cybersecurity"]
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Syne:wght@500;600;700;800&family=Inter:wght@400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0A0A0A;
-    --bg-panel:#141414;
-    --bg-panel-alt:#1C1C1B;
-    --text-primary:#EDEDE8;
-    --text-muted:#98978F;
-    --text-faint:#57564F;
-    --accent:#C9A961;
-    --accent-dim: rgba(201,169,97,0.12);
-    --accent-blue:#9A968A;
-    --border: rgba(255,255,255,0.06);
-    --border-hover: rgba(255,255,255,0.14);
+    --bg:#0A0A0F;
+    --bg-panel:#131318;
+    --bg-panel-alt:#1A1A22;
+    --text-primary:#EDEDF2;
+    --text-muted:#93929E;
+    --text-faint:#55545E;
+
+    --gold:#C9A961;
+    --gold-dim: rgba(201,169,97,0.12);
+    --gold-border: rgba(201,169,97,0.28);
+
+    --violet:#8B7FD9;
+    --violet-dim: rgba(139,127,217,0.12);
+    --violet-glow: rgba(139,127,217,0.35);
+    --violet-border: rgba(139,127,217,0.28);
+
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(255,255,255,0.16);
     --radius: 14px;
-    --display: 'Fraunces', serif;
-    --body: 'Inter', sans-serif;
-    --mono: 'JetBrains Mono', monospace;
+
+    --display:'Fraunces', serif;
+    --techy:'Syne', sans-serif;
+    --body:'Inter', sans-serif;
+    --mono:'DM Mono', monospace;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
   body{
-    background:var(--bg);
-    color:var(--text-primary);
-    font-family:var(--body);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    background:var(--bg); color:var(--text-primary);
+    font-family:var(--body); line-height:1.6;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
   }
   a{color:inherit; text-decoration:none;}
   img{max-width:100%; display:block;}
-  ::selection{background:var(--accent-dim); color:var(--accent);}
+  ::selection{background:var(--gold-dim); color:var(--gold);}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+  :focus-visible{outline:2px solid var(--violet); outline-offset:3px; border-radius:4px;}
 
-  /* subtle grid texture background */
   body::before{
-    content:"";
-    position:fixed; inset:0;
+    content:""; position:fixed; inset:0;
     background-image:
-      radial-gradient(circle at 15% 10%, rgba(201,169,97,0.05), transparent 40%),
-      radial-gradient(circle at 85% 30%, rgba(255,255,255,0.03), transparent 45%);
-    pointer-events:none;
-    z-index:0;
+      radial-gradient(circle at 12% 8%, rgba(201,169,97,0.06), transparent 40%),
+      radial-gradient(circle at 88% 28%, rgba(139,127,217,0.08), transparent 45%);
+    pointer-events:none; z-index:0;
   }
 
   .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
 
-  /* NAV */
+  /* NAV — the gold trace with violet nodes */
   header.nav{
     position:fixed; top:0; left:0; right:0; z-index:100;
-    backdrop-filter:blur(14px);
-    background:rgba(11,15,19,0.72);
+    backdrop-filter:blur(14px); background:rgba(10,10,15,0.75);
     border-bottom:1px solid var(--border);
   }
-  .nav-inner{
-    max-width:1120px; margin:0 auto; padding:16px 24px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .nav-logo{
-    font-family:var(--mono); font-size:14px; letter-spacing:0.02em;
-    color:var(--text-primary); display:flex; align-items:center; gap:8px;
-  }
-  .nav-logo .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px var(--accent);}
-  .nav-links{display:flex; gap:32px; list-style:none;}
-  .nav-links a{
-    font-family:var(--mono); font-size:13px; color:var(--text-muted);
-    letter-spacing:0.02em; transition:color .2s ease; position:relative;
-  }
-  .nav-links a:hover{color:var(--text-primary);}
+  .nav-trace{position:absolute; bottom:-1px; left:0; right:0; height:1px; background:linear-gradient(90deg, transparent, var(--gold-border) 20%, var(--violet-border) 50%, var(--gold-border) 80%, transparent);}
+  .nav-inner{max-width:1120px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between;}
+  .nav-logo{font-family:var(--techy); font-weight:700; font-size:15px; letter-spacing:0.01em; display:flex; align-items:center; gap:9px;}
+  .nav-logo img{width:26px; height:26px; border-radius:6px;}
+  .nav-links{display:flex; gap:30px; list-style:none; align-items:center;}
+  .nav-links a{font-family:var(--mono); font-size:13px; color:var(--text-muted); letter-spacing:0.02em; transition:color .2s ease;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-links .node{width:6px; height:6px; border-radius:50%; background:var(--violet); box-shadow:0 0 8px var(--violet-glow); display:inline-block; margin-right:6px;}
   .nav-toggle{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none;}
   .nav-toggle span{width:22px; height:2px; background:var(--text-primary);}
 
   /* HERO */
-  .hero{
-    position:relative; z-index:1;
-    min-height:100vh; display:flex; flex-direction:column; justify-content:center;
-    padding:140px 0 80px;
-  }
-  .eyebrow{
-    font-family:var(--mono); font-size:13px; color:var(--accent);
-    letter-spacing:0.08em; text-transform:uppercase;
-    display:inline-flex; align-items:center; gap:10px; margin-bottom:24px;
-    opacity:0; animation:fadeUp .7s ease forwards; animation-delay:.1s;
-  }
-  .eyebrow::before{content:""; width:24px; height:1px; background:var(--accent);}
-  h1.headline{
-    font-family:var(--display); font-weight:600;
-    font-size:clamp(2.4rem, 6vw, 4.6rem);
-    line-height:1.08; letter-spacing:-0.01em;
-    max-width:820px;
-    opacity:0; animation:fadeUp .7s ease forwards; animation-delay:.2s;
-  }
-  h1.headline .accent-text{color:var(--accent);}
-  .subtitle{
-    font-size:clamp(1.05rem, 1.6vw, 1.25rem); color:var(--text-muted);
-    max-width:600px; margin-top:24px;
-    opacity:0; animation:fadeUp .7s ease forwards; animation-delay:.32s;
-  }
-  .hero-tags{
-    font-family:var(--mono); font-size:14px; color:var(--text-muted);
-    margin-top:22px; letter-spacing:0.02em;
-    opacity:0; animation:fadeUp .7s ease forwards; animation-delay:.32s;
-  }
-  .hero-tags .tag-dot{color:var(--accent); margin:0 4px;}
-  .hero-actions{
-    display:flex; gap:16px; margin-top:36px; flex-wrap:wrap;
-    opacity:0; animation:fadeUp .7s ease forwards; animation-delay:.44s;
-  }
-  .btn{
-    font-family:var(--mono); font-size:14px; padding:13px 24px;
-    border-radius:8px; transition:all .2s ease; display:inline-flex; align-items:center; gap:8px;
-    border:1px solid transparent; cursor:pointer;
-  }
-  .btn-primary{background:var(--accent); color:#0A0A0A; font-weight:500;}
+  .hero{position:relative; z-index:1; min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:140px 0 80px; overflow:hidden;}
+  .hero-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.16; z-index:-1; filter:grayscale(40%) contrast(1.1);}
+  .hero-video-fade{position:absolute; inset:0; background:linear-gradient(180deg, var(--bg) 0%, rgba(10,10,15,0.4) 40%, var(--bg) 100%); z-index:-1;}
+  .eyebrow{font-family:var(--techy); font-weight:600; font-size:13px; color:var(--violet); letter-spacing:0.1em; text-transform:uppercase; display:inline-flex; align-items:center; gap:10px; margin-bottom:24px; opacity:0; animation:fadeUp .7s ease forwards .1s;}
+  .eyebrow::before{content:""; width:24px; height:1px; background:var(--gold);}
+  h1.headline{font-family:var(--display); font-weight:600; font-size:clamp(2.4rem,6vw,4.6rem); line-height:1.08; letter-spacing:-0.01em; max-width:820px; opacity:0; animation:fadeUp .7s ease forwards .2s;}
+  h1.headline .accent-text{color:var(--gold);}
+  .subtitle{font-size:clamp(1.05rem,1.6vw,1.25rem); color:var(--text-muted); max-width:600px; margin-top:24px; opacity:0; animation:fadeUp .7s ease forwards .32s;}
+  .hero-tags{font-family:var(--mono); font-size:14px; color:var(--text-muted); margin-top:22px; letter-spacing:0.02em; opacity:0; animation:fadeUp .7s ease forwards .38s;}
+  .hero-tags .tag-dot{color:var(--violet); margin:0 4px;}
+  .hero-actions{display:flex; gap:16px; margin-top:36px; flex-wrap:wrap; opacity:0; animation:fadeUp .7s ease forwards .44s;}
+  .btn{font-family:var(--techy); font-weight:600; font-size:14px; padding:13px 24px; border-radius:8px; transition:all .2s ease; display:inline-flex; align-items:center; gap:8px; border:1px solid transparent; cursor:pointer;}
+  .btn-primary{background:var(--gold); color:#0A0A0A;}
   .btn-primary:hover{background:#DBC17E; transform:translateY(-2px);}
   .btn-outline{border-color:var(--border); color:var(--text-primary);}
-  .btn-outline:hover{border-color:var(--border-hover); background:var(--bg-panel);}
+  .btn-outline:hover{border-color:var(--violet-border); background:var(--violet-dim);}
 
-  /* build log — signature element */
-  .buildlog{
-    margin-top:64px; max-width:640px;
-    background:var(--bg-panel); border:1px solid var(--border); border-radius:var(--radius);
-    overflow:hidden;
-    opacity:0; animation:fadeUp .7s ease forwards; animation-delay:.56s;
-  }
-  .buildlog-bar{
-    display:flex; align-items:center; gap:8px; padding:10px 16px;
-    border-bottom:1px solid var(--border); background:var(--bg-panel-alt);
-  }
-  .buildlog-bar span{width:9px; height:9px; border-radius:50%; background:#3A4552;}
-  .buildlog-bar .label{
-    margin-left:8px; font-family:var(--mono); font-size:12px; color:var(--text-faint);
-  }
+  .buildlog{margin-top:60px; max-width:640px; background:var(--bg-panel); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; opacity:0; animation:fadeUp .7s ease forwards .56s;}
+  .buildlog-bar{display:flex; align-items:center; gap:8px; padding:10px 16px; border-bottom:1px solid var(--border); background:var(--bg-panel-alt);}
+  .buildlog-bar span{width:9px; height:9px; border-radius:50%; background:#3A3A45;}
+  .buildlog-bar .label{margin-left:8px; font-family:var(--mono); font-size:12px; color:var(--text-faint);}
   .buildlog-body{padding:18px 20px; font-family:var(--mono); font-size:13.5px; color:var(--text-muted); min-height:64px;}
-  .buildlog-body .prompt{color:var(--accent);}
-  .buildlog-body .line{white-space:pre;}
-  .cursor{display:inline-block; width:7px; height:15px; background:var(--accent); vertical-align:middle; margin-left:2px; animation:blink 1s step-end infinite;}
+  .buildlog-body .prompt{color:var(--violet);}
+  .cursor{display:inline-block; width:7px; height:15px; background:var(--gold); vertical-align:middle; margin-left:2px; animation:blink 1s step-end infinite;}
 
   @keyframes fadeUp{from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);}}
   @keyframes blink{50%{opacity:0;}}
 
-  /* SECTION shared */
   section{position:relative; z-index:1; padding:120px 0;}
   .section-head{margin-bottom:56px; max-width:640px;}
-  .section-eyebrow{
-    font-family:var(--mono); font-size:12.5px; color:var(--accent);
-    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px; display:block;
-  }
-  h2.section-title{
-    font-family:var(--display); font-weight:500; font-size:clamp(1.8rem, 3.4vw, 2.6rem);
-    letter-spacing:0;
-  }
+  .section-eyebrow{font-family:var(--techy); font-weight:700; font-size:12.5px; color:var(--violet); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px; display:block;}
+  h2.section-title{font-family:var(--display); font-weight:500; font-size:clamp(1.8rem,3.4vw,2.6rem);}
   .section-desc{color:var(--text-muted); margin-top:14px; font-size:1.02rem;}
 
   .reveal{opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease;}
   .reveal.in{opacity:1; transform:translateY(0);}
 
   /* ABOUT */
-  .about-grid{display:grid; grid-template-columns:220px 1fr 0.85fr; gap:44px; align-items:start;}
-  .about-photo{
-    border-radius:12px; overflow:hidden; border:1px solid var(--border);
-    background:#000;
-  }
-  .about-photo img{
-    width:100%; height:auto; display:block;
-    filter:grayscale(100%) contrast(1.08) brightness(0.92);
-    transition:filter .3s ease;
-  }
+  .about-grid{display:grid; grid-template-columns:220px 1fr; gap:44px; align-items:start;}
+  .about-photo{border-radius:50%; overflow:hidden; border:1px solid var(--gold-border); background:#000; width:220px; height:220px;}
+  .about-photo img{width:100%; height:100%; object-fit:cover; filter:grayscale(100%) contrast(1.08) brightness(0.92); transition:filter .3s ease;}
   .about-photo:hover img{filter:grayscale(60%) contrast(1.1) brightness(0.95);}
-  .about-text p{color:var(--text-muted); margin-bottom:18px; font-size:1.02rem;}
-  .about-lead{
-    font-family:var(--display); font-weight:500; font-size:1.5rem;
-    color:var(--text-primary) !important; line-height:1.35; margin-bottom:22px !important;
-  }
+  .about-lead{font-family:var(--display); font-weight:500; font-size:1.5rem; color:var(--text-primary); line-height:1.35; margin-bottom:20px;}
+  .about-text p{color:var(--text-muted); margin-bottom:16px; font-size:1.02rem;}
   .about-text strong{color:var(--text-primary); font-weight:500;}
-  .about-cards{display:flex; flex-direction:column; gap:14px;}
-  .about-card{
-    background:var(--bg-panel); border:1px solid var(--border); border-radius:12px;
-    padding:18px 20px;
-  }
-  .about-card .k{font-family:var(--mono); font-size:11.5px; color:var(--accent); text-transform:uppercase; letter-spacing:.06em;}
-  .about-card .v{margin-top:6px; font-size:.98rem; color:var(--text-primary);}
 
-  /* PROJECTS */
-  .project-card{
-    border:1px solid var(--border); border-radius:var(--radius);
-    background:var(--bg-panel);
-    padding:36px; margin-bottom:24px;
-    display:grid; grid-template-columns:1fr 1.3fr; gap:36px;
-    transition:border-color .25s ease, transform .25s ease;
-  }
-  .project-card:hover{border-color:var(--border-hover); transform:translateY(-3px);}
-  .project-visual{
-    border-radius:10px; background:var(--bg-panel-alt); border:1px solid var(--border);
-    min-height:200px; display:flex; align-items:center; justify-content:center;
-    font-family:var(--mono); font-size:12px; color:var(--text-faint); text-align:center; padding:20px;
-  }
-  .device-frame{
-    border-radius:12px; overflow:hidden; border:1px solid var(--border);
-    background:var(--bg-panel-alt); display:flex; flex-direction:column;
-    box-shadow:0 20px 40px rgba(0,0,0,0.35);
-  }
-  .device-bar{
-    display:flex; align-items:center; gap:7px; padding:10px 14px;
-    background:var(--bg-panel); border-bottom:1px solid var(--border);
-  }
-  .device-dot{width:8px; height:8px; border-radius:50%; background:var(--border-hover);}
-  .device-url{
-    margin-left:10px; font-family:var(--mono); font-size:11px; color:var(--text-faint);
-    background:var(--bg-panel-alt); padding:3px 10px; border-radius:5px; border:1px solid var(--border);
-  }
-  .device-content{
-    flex:1; min-height:220px; display:flex; align-items:center; justify-content:center;
-    background:
-      radial-gradient(circle at 30% 20%, rgba(201,169,97,0.06), transparent 55%),
-      linear-gradient(160deg, #161615, #0E0E0D);
-    font-family:var(--mono); font-size:12px; color:var(--text-faint); text-align:center; padding:24px;
-  }
-  .feature-list{display:flex; flex-wrap:wrap; gap:10px 18px; margin-bottom:20px;}
-  .feature-item{font-family:var(--mono); font-size:12px; color:var(--text-muted);}
-  .feature-item::first-letter{color:var(--accent);}
-  .project-top{display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap;}
-  .status-tag{
-    font-family:var(--mono); font-size:11px; letter-spacing:.05em; padding:4px 10px;
-    border-radius:20px; text-transform:uppercase; font-weight:500;
-  }
-  .status-live{background:rgba(201,169,97,0.12); color:var(--accent); border:1px solid rgba(201,169,97,0.3);}
-  .status-pre{background:rgba(255,255,255,0.05); color:var(--text-muted); border:1px solid var(--border-hover);}
-  .status-shipped{background:rgba(255,255,255,0.08); color:var(--text-muted); border:1px solid var(--border);}
-  .project-title{font-family:var(--display); font-size:1.5rem; font-weight:600;}
-  .project-block{margin-top:16px;}
-  .project-block .k{
-    font-family:var(--mono); font-size:11px; color:var(--text-faint); text-transform:uppercase;
-    letter-spacing:.06em; margin-bottom:6px; display:block;
-  }
-  .project-block .v{color:var(--text-muted); font-size:.96rem;}
-  .tech-pills{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;}
-  .tech-pill{
-    font-family:var(--mono); font-size:11.5px; padding:4px 10px; border-radius:6px;
-    background:var(--bg-panel-alt); border:1px solid var(--border); color:var(--text-muted);
-  }
-  .project-links{display:flex; gap:14px; margin-top:22px;}
-  .project-links a{
-    font-family:var(--mono); font-size:12.5px; color:var(--text-primary);
-    border-bottom:1px solid var(--border-hover); padding-bottom:2px; transition:color .2s, border-color .2s;
-  }
-  .project-links a:hover{color:var(--accent); border-color:var(--accent);}
+  /* PROJECT / TOOL CARDS */
+  .tools-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .tool-card{background:var(--bg-panel); border:1px solid var(--border); border-radius:var(--radius); padding:28px; transition:all .25s ease; position:relative; overflow:hidden;}
+  .tool-card:hover{border-color:var(--violet-border); transform:translateY(-4px); box-shadow:0 12px 40px rgba(139,127,217,0.1);}
+  .tool-card .tool-status{display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:11px; color:var(--violet); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:16px;}
+  .tool-card .tool-status .dot{width:6px; height:6px; border-radius:50%; background:var(--violet); box-shadow:0 0 6px var(--violet-glow);}
+  .tool-card h3{font-family:var(--techy); font-weight:700; font-size:1.2rem; margin-bottom:10px;}
+  .tool-card p{color:var(--text-muted); font-size:0.95rem; margin-bottom:20px;}
+  .tool-card .tool-link{font-family:var(--mono); font-size:13px; color:var(--gold); display:inline-flex; align-items:center; gap:6px;}
+  .tool-card .tool-link:hover{color:#DBC17E;}
 
-  /* SKILLS */
-  .skills-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;}
-  .skill-cat{
-    background:var(--bg-panel); border:1px solid var(--border); border-radius:var(--radius);
-    padding:26px;
-  }
-  .skill-cat .cat-title{
-    font-family:var(--mono); font-size:12px; color:var(--accent); text-transform:uppercase;
-    letter-spacing:.06em; margin-bottom:16px;
-  }
-  .skill-list{list-style:none; display:flex; flex-direction:column; gap:10px;}
-  .skill-list li{
-    font-size:.95rem; color:var(--text-primary); display:flex; align-items:center; gap:10px;
-  }
-  .skill-list li::before{content:""; width:5px; height:5px; border-radius:50%; background:var(--text-faint);}
-
-  /* JOURNEY */
-  .timeline{position:relative; padding-left:32px;}
-  .timeline::before{content:""; position:absolute; left:5px; top:6px; bottom:6px; width:1px; background:var(--border);}
+  /* TIMELINE */
+  .timeline{position:relative; padding-left:28px; border-left:1px solid var(--border);}
   .tl-item{position:relative; padding-bottom:44px;}
-  .tl-item:last-child{padding-bottom:0;}
-  .tl-item::before{
-    content:""; position:absolute; left:-32px; top:4px; width:11px; height:11px;
-    border-radius:50%; background:var(--bg); border:2px solid var(--accent);
-  }
-  .tl-year{font-family:var(--mono); font-size:13px; color:var(--accent); margin-bottom:6px;}
-  .tl-title{font-family:var(--display); font-size:1.15rem; font-weight:600; margin-bottom:6px;}
-  .tl-desc{color:var(--text-muted); font-size:.96rem; max-width:560px;}
+  .tl-item::before{content:""; position:absolute; left:-33px; top:4px; width:9px; height:9px; border-radius:50%; background:var(--gold); box-shadow:0 0 8px rgba(201,169,97,0.4);}
+  .tl-year{font-family:var(--mono); font-size:13px; color:var(--violet); margin-bottom:6px;}
+  .tl-title{font-family:var(--techy); font-weight:700; font-size:1.1rem; margin-bottom:6px;}
+  .tl-desc{color:var(--text-muted); font-size:0.98rem; max-width:520px;}
+
+  /* CRYPTO / INNOVATION LAB */
+  .lab-box{background:linear-gradient(135deg, var(--bg-panel), var(--bg-panel-alt)); border:1px solid var(--violet-border); border-radius:var(--radius); padding:48px; display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap;}
+  .lab-box .lab-eyebrow{font-family:var(--mono); font-size:12px; color:var(--violet); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px; display:block;}
+  .lab-box h2{font-family:var(--display); font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:10px;}
+  .lab-box p{color:var(--text-muted); max-width:460px;}
 
   /* RESUME */
-  .resume-box{
-    border:1px solid var(--border); border-radius:var(--radius); background:var(--bg-panel);
-    padding:48px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;
-  }
-  .resume-left .section-title{margin-bottom:8px;}
-  .resume-links{display:flex; gap:20px; margin-top:16px;}
-  .resume-links a{font-family:var(--mono); font-size:13px; color:var(--text-muted); border-bottom:1px solid transparent;}
-  .resume-links a:hover{color:var(--text-primary); border-color:var(--border-hover);}
+  .resume-box{display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; background:var(--bg-panel); border:1px solid var(--border); border-radius:var(--radius); padding:40px;}
+  .resume-links{display:flex; gap:20px; margin-top:14px;}
+  .resume-links a{font-family:var(--mono); font-size:13px; color:var(--gold);}
 
   /* CONTACT */
-  .contact-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px;}
-  .contact-info .info-row{margin-bottom:22px;}
-  .contact-info .k{font-family:var(--mono); font-size:11.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px; display:block;}
-  .contact-info .v{font-size:1.05rem;}
-  .contact-info .v a:hover{color:var(--accent);}
-  form.contact-form{display:flex; flex-direction:column; gap:16px;}
-  .contact-form input, .contact-form textarea{
-    background:var(--bg-panel); border:1px solid var(--border); border-radius:8px;
-    padding:14px 16px; color:var(--text-primary); font-family:var(--body); font-size:.96rem;
-    outline:none; transition:border-color .2s ease;
-  }
-  .contact-form input:focus, .contact-form textarea:focus{border-color:var(--accent);}
-  .contact-form textarea{min-height:120px; resize:vertical;}
-  .form-note{font-family:var(--mono); font-size:12px; color:var(--text-faint); margin-top:-4px;}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+  .info-row{display:flex; justify-content:space-between; padding:16px 0; border-bottom:1px solid var(--border);}
+  .info-row .k{font-family:var(--mono); font-size:13px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.06em;}
+  .info-row .v a:hover{color:var(--gold);}
+  .contact-form{display:flex; flex-direction:column; gap:14px;}
+  .contact-form input, .contact-form textarea{background:var(--bg-panel); border:1px solid var(--border); border-radius:8px; padding:13px 16px; color:var(--text-primary); font-family:var(--body); font-size:14px;}
+  .contact-form input:focus, .contact-form textarea:focus{outline:none; border-color:var(--violet-border);}
+  .contact-form textarea{min-height:100px; resize:vertical;}
+  .form-note{font-family:var(--mono); font-size:11px; color:var(--text-faint);}
 
-  /* NOW STRIP */
-  .now-strip{padding:0 24px 60px !important;}
-  .now-box{
-    max-width:1120px; margin:0 auto; padding:26px 32px;
-    background:var(--bg-panel); border:1px solid var(--border); border-radius:var(--radius);
-  }
-  .now-header{display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; flex-wrap:wrap; gap:10px;}
-  .now-live{font-family:var(--mono); font-size:12px; color:var(--text-muted); display:flex; align-items:center; gap:8px;}
-  .now-dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px var(--accent);}
-  .now-grid{display:flex; flex-wrap:wrap; gap:28px;}
-  .now-item{display:flex; align-items:center; gap:10px; font-size:.94rem; color:var(--text-primary);}
-  .now-icon{font-size:1rem; opacity:.9;}
+  .philosophy-box{text-align:center; padding:60px 0;}
+  .philosophy-quote{font-family:var(--display); font-size:clamp(1.4rem,3vw,2rem); line-height:1.5; color:var(--text-primary);}
+  .philosophy-quote .accent-text{color:var(--gold);}
 
-  /* CASE STUDY MODAL */
-  .modal-overlay{
-    position:fixed; inset:0; z-index:200; background:rgba(6,6,6,0.82);
-    backdrop-filter:blur(6px);
-    display:none; align-items:flex-start; justify-content:center;
-    padding:80px 24px; overflow-y:auto;
-  }
-  .modal-overlay.open{display:flex;}
-  .modal-box{
-    position:relative; max-width:680px; width:100%;
-    background:var(--bg-panel); border:1px solid var(--border-hover); border-radius:var(--radius);
-    padding:44px 40px; box-shadow:0 30px 60px rgba(0,0,0,0.5);
-  }
-  .modal-title{font-family:var(--display); font-size:1.9rem; font-weight:500; margin:10px 0 24px;}
-  .modal-close{
-    position:absolute; top:20px; right:20px; background:none; border:1px solid var(--border);
-    color:var(--text-muted); width:32px; height:32px; border-radius:50%; font-size:18px;
-    cursor:pointer; transition:all .2s ease;
-  }
-  .modal-close:hover{color:var(--text-primary); border-color:var(--border-hover);}
-  .case-study-btn{cursor:pointer;}
+  footer{border-top:1px solid var(--border); padding:40px 0; position:relative; z-index:1;}
+  .footer-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  .footer-inner p{color:var(--text-muted); font-size:0.9rem;}
+  .footer-credits{text-align:right; font-family:var(--mono); font-size:12px; color:var(--text-faint);}
 
-  /* BEYOND THE CODE */
-  .beyond-section{padding:0 24px 20px;}
-  .beyond-box{max-width:680px;}
-  .beyond-text{color:var(--text-muted); font-size:1.05rem; margin-top:14px; line-height:1.7;}
-
-  /* BUILD PHILOSOPHY */
-  .philosophy-section{padding:60px 24px 140px; text-align:center;}
-  .philosophy-box{max-width:720px; margin:0 auto;}
-  .philosophy-quote{
-    font-family:var(--display); font-weight:500; font-size:clamp(1.5rem, 3.2vw, 2.2rem);
-    line-height:1.5; color:var(--text-primary); margin-top:22px;
-  }
-
-  footer{
-    border-top:1px solid var(--border); padding:36px 0; position:relative; z-index:1;
-  }
-  .footer-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
-  .footer-credits{text-align:right;}
-  .footer-credits p{font-family:var(--mono); font-size:12px; color:var(--text-faint); line-height:1.6;}
-  .footer-inner p{font-family:var(--mono); font-size:12px; color:var(--text-faint);}
-
-  @media (max-width: 860px){
+  @media (max-width:860px){
     .nav-links{display:none;}
     .nav-toggle{display:flex;}
-    .about-grid, .contact-grid{grid-template-columns:1fr;}
-    .project-card{grid-template-columns:1fr;}
-    .skills-grid{grid-template-columns:1fr;}
-    .resume-box{flex-direction:column; align-items:flex-start; text-align:left;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-photo{margin:0 auto;}
+    .tools-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -392,356 +217,104 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <div class="nav-logo">
-    <span class="dot"></span>Neeraj
-</div>
+    <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="Neeraj Nandan logo">NEERAJ NANDAN</a>
     <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#now">Now</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
+      <li><a href="#tools"><span class="node"></span>Tools</a></li>
+      <li><a href="#lab">Lab</a></li>
       <li><a href="#journey">Journey</a></li>
-      <li><a href="#resume">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   </div>
+  <div class="nav-trace"></div>
 </header>
 
 <main>
-  <!-- HERO -->
-  <section class="hero wrap" id="home">
-    <span class="eyebrow">AI-Assisted Digital Solutions Builder</span>
-    <h1 class="headline">Hi, I'm Neeraj — I build useful <span class="accent-text">digital products with AI.</span></h1>
-    <p class="hero-tags">Commerce Graduate <span class="tag-dot">·</span> Builder <span class="tag-dot">·</span> Problem Solver <span class="tag-dot">·</span> Always Learning</p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn btn-primary">View Projects →</a>
-      <a href="#resume" class="btn btn-outline">Download Resume</a>
-    </div>
-
-    <div class="buildlog">
-      <div class="buildlog-bar">
-        <span></span><span></span><span></span>
-        <span class="label">build.log</span>
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/logo.png">
+      <source src="assets/background.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-fade"></div>
+    <div class="wrap">
+      <span class="eyebrow">AI-Assisted Digital Products Builder</span>
+      <h1 class="headline">Hi, I'm Neeraj — I build <span class="accent-text">useful digital products</span> with AI.</h1>
+      <p class="subtitle">Commerce graduate turned self-taught builder. I ship browser-based tools that work fast, respect privacy, and don't need a server to do their job.</p>
+      <p class="hero-tags">Image Suite <span class="tag-dot">·</span> PDF Suite <span class="tag-dot">·</span> QR Generator <span class="tag-dot">·</span> TREND</p>
+      <div class="hero-actions">
+        <a href="#tools" class="btn btn-primary">Explore my tools</a>
+        <a href="#contact" class="btn btn-outline">Get in touch</a>
       </div>
-      <div class="buildlog-body">
-        <div class="line"><span class="prompt">&gt;</span> <span id="typed"></span><span class="cursor"></span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NOW -->
-  <section class="wrap now-strip" id="now">
-    <div class="now-box reveal">
-      <div class="now-header">
-        <span class="section-eyebrow" style="margin:0;">Currently</span>
-        <span class="now-live"><span class="now-dot"></span>Always learning</span>
-      </div>
-      <div class="now-grid">
-        <div class="now-item"><span class="now-icon">📍</span><span class="now-text">Kerala, India</span></div>
-        <div class="now-item"><span class="now-icon">🛠</span><span class="now-text">Building TrendCoin</span></div>
-        <div class="now-item"><span class="now-icon">💼</span><span class="now-text">Looking for remote opportunities</span></div>
-        <div class="now-item"><span class="now-icon">📚</span><span class="now-text">Learning Linux & Cybersecurity</span></div>
-        <div class="now-item"><span class="now-icon">🤖</span><span class="now-text">Building AI tools</span></div>
+      <div class="buildlog">
+        <div class="buildlog-bar"><span></span><span></span><span></span><span class="label">build.log</span></div>
+        <div class="buildlog-body"><span class="prompt">~/neeraj $</span> <span id="typed"></span><span class="cursor"></span></div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section class="wrap" id="about">
     <div class="section-head reveal">
       <span class="section-eyebrow">About</span>
-      <h2 class="section-title">Commerce background, builder's habit.</h2>
+      <h2 class="section-title">From commerce to code, self-taught.</h2>
     </div>
     <div class="about-grid">
       <div class="about-photo reveal">
-        <img src="assets/profile.jpg" alt="Neeraj Nandan" loading="lazy">
+        <img src="assets/headshot.jpg" alt="Neeraj Nandan portrait">
       </div>
       <div class="about-text reveal">
         <p class="about-lead">I enjoy turning ideas into working products.</p>
-        <p>Give me a rough concept and I'll figure out how to build it — that instinct is what led me into <strong>AI, automation, and digital products</strong> in the first place.</p>
-        <p>My background is commerce — a <strong>BBA graduate</strong> (with supplementary papers pending), not computer science — which means everything I build, I've learned by building it.</p>
-        <p>I'm a fast learner who enjoys turning a rough idea into something that actually works: a tool, a script, a product. I lean on AI-assisted development to move quickly, but I care about understanding what I ship, not just shipping it.</p>
-        <p>Currently looking for <strong>remote opportunities</strong> where I can keep building and keep learning at the same pace.</p>
-      </div>
-      <div class="about-cards reveal">
-        <div class="about-card"><div class="k">Focus</div><div class="v">AI-assisted development, automation, web tools</div></div>
-        <div class="about-card"><div class="k">Background</div><div class="v">Commerce / BBA Graduate — self-taught in tech</div></div>
-        <div class="about-card"><div class="k">Currently</div><div class="v">Building a portfolio, TrendCoin, and a remote career</div></div>
-        <div class="about-card"><div class="k">Looking for</div><div class="v">Remote roles in automation, web, or digital products</div></div>
+        <p>I'm a BBA graduate from Kerala with <strong>no formal tech background</strong> — everything I know about building software, I taught myself. That gap became the point: I use AI as a genuine collaborator to design, build, and ship real tools.</p>
+        <p>My live projects — <strong>Image Suite</strong>, <strong>PDF Suite</strong>, and <strong>QR Generator</strong> — run entirely in the browser. No uploads, no server round-trips, no tracking. I care about tools that respect the person using them.</p>
+        <p>Outside of building, I'm into <strong>cybersecurity and Android malware analysis</strong> as a hobby, and I trade forex, crypto, and Indian equities — which is also what pulled me into building <strong>TREND</strong>, a transparent token project on BNB Smart Chain.</p>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section class="wrap" id="projects">
+  <section class="wrap" id="tools">
     <div class="section-head reveal">
-      <span class="section-eyebrow">Featured Projects</span>
-      <h2 class="section-title">What I've built, and how I think.</h2>
-      <p class="section-desc">Each project below follows the same structure — the problem, the solution, what I learned. That's more useful than a list of features.</p>
+      <span class="section-eyebrow">Tools</span>
+      <h2 class="section-title">Three tools. Zero uploads.</h2>
+      <p class="section-desc">Everything below runs client-side in your browser — your files never leave your device.</p>
     </div>
-
-    <!-- Image Suite -->
-    <div class="project-card reveal">
-      <div class="device-frame">
-        <div class="device-bar">
-          <span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span>
-          <span class="device-url">vishnuharshan.com/image-suite</span>
-        </div>
-        <div class="device-content"><img src="assets/image-suite.png" alt="Image Suite" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+    <div class="tools-grid">
+      <div class="tool-card reveal">
+        <span class="tool-status"><span class="dot"></span>Live</span>
+        <h3>Image Suite</h3>
+        <p>Convert images between WebP, JPG, and PNG instantly — fully private, fully in-browser.</p>
+        <a href="tools/image-suite.html" class="tool-link">Open tool →</a>
       </div>
-      <div>
-        <div class="project-top">
-          <span class="status-tag status-live">Live</span>
-          <span class="project-title">Image Suite</span>
-        </div>
-        <div class="feature-list">
-          <span class="feature-item">✔ Browser-based</span>
-          <span class="feature-item">✔ Privacy-first</span>
-          <span class="feature-item">✔ Supports JPG, PNG, WebP</span>
-          <span class="feature-item">✔ Batch Conversion</span>
-          <span class="feature-item">✔ Client-side Processing</span>
-        </div>
-        <div class="project-block">
-          <span class="k">The Problem</span>
-          <p class="v">Most online image converters upload your files to a server first — slow, and a privacy risk for anything sensitive. Most people just want to convert a JPG to WebP without handing it to a third party.</p>
-        </div>
-        <div class="project-block">
-          <span class="k">The Solution</span>
-          <p class="v">Handles JPG, PNG, and WebP conversion entirely client-side — nothing uploads. Batch conversion with drag-to-reorder, custom filename patterns, adjustable compression, and paste-from-clipboard.</p>
-        </div>
-        <div class="project-block">
-          <span class="k">Technologies</span>
-          <div class="tech-pills">
-            <span class="tech-pill">AI-assisted Development</span>
-            <span class="tech-pill">JavaScript</span>
-            <span class="tech-pill">Canvas API</span>
-            <span class="tech-pill">Privacy-first Design</span>
-          </div>
-        </div>
-        <div class="project-links">
-          <a href="https://vishnuharshan.com/image-suite/" target="_blank">Live Demo →</a>
-          <a href="#">GitHub Repo →</a>
-          <a href="#" class="case-study-btn" data-target="case-image-suite">View Case Study →</a>
-        </div>
+      <div class="tool-card reveal">
+        <span class="tool-status"><span class="dot"></span>Live</span>
+        <h3>PDF Suite</h3>
+        <p>Merge, reorder, and generate PDFs directly in your browser with pdf-lib and jsPDF.</p>
+        <a href="tools/pdf-suite.html" class="tool-link">Open tool →</a>
       </div>
-    </div>
-
-    <!-- PDF Suite -->
-    <div class="project-card reveal">
-      <div class="device-frame">
-        <div class="device-bar">
-          <span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span>
-          <span class="device-url">vishnuharshan.com/pdf-suite</span>
-        </div>
-        <div class="device-content"><img src="assets/pdf-suite.png" alt="PDF Suite" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      </div>
-      <div>
-        <div class="project-top">
-          <span class="status-tag status-live">Live</span>
-          <span class="project-title">PDF Suite</span>
-        </div>
-        <div class="feature-list">
-          <span class="feature-item">✔ Browser-based</span>
-          <span class="feature-item">✔ Privacy-first</span>
-          <span class="feature-item">✔ Merge, Split, Image→PDF</span>
-          <span class="feature-item">✔ Client-side Processing</span>
-        </div>
-        <div class="project-block">
-          <span class="k">The Problem</span>
-          <p class="v">People need to merge, split, or build PDFs without uploading files to a server — most free tools online do exactly that, quietly.</p>
-        </div>
-        <div class="project-block">
-          <span class="k">The Solution</span>
-          <p class="v">Three modes in one tool: merge multiple PDFs, split by page range, and convert images into a PDF with control over page size, orientation, and quality. Nothing uploads — it all runs in the browser.</p>
-        </div>
-        <div class="project-block">
-          <span class="k">Technologies</span>
-          <div class="tech-pills">
-            <span class="tech-pill">AI-assisted Development</span>
-            <span class="tech-pill">JavaScript</span>
-            <span class="tech-pill">PDF manipulation (client-side)</span>
-            <span class="tech-pill">Privacy-first Design</span>
-          </div>
-        </div>
-        <div class="project-links">
-          <a href="https://vishnuharshan.com/pdf-suite/" target="_blank">Live Demo →</a>
-          <a href="#">GitHub Repo →</a>
-          <a href="#" class="case-study-btn" data-target="case-pdf-suite">View Case Study →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="reveal" style="margin-top:8px; color:var(--text-faint); font-family:var(--mono); font-size:13px;">
-      → Next up: AI Resume Builder, QR Code Generator, Invoice Generator, Password Generator, Chrome Extension, Automation Scripts, WordPress Sites
-    </div>
-
-    <!-- Innovation Lab -->
-    <div class="section-head reveal" style="margin-top:96px;">
-      <span class="section-eyebrow">Innovation Lab</span>
-      <h2 class="section-title" style="font-size:1.7rem;">Personal projects, outside client work.</h2>
-      <p class="section-desc">This one's more experimental — separated from the product work above on purpose.</p>
-    </div>
-
-    <!-- TrendCoin -->
-    <div class="project-card reveal">
-      <div class="device-frame">
-        <div class="device-bar">
-          <span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span>
-          <span class="device-url">bscscan.com/token/0xeF82…eb10</span>
-        </div>
-        <div class="device-content"><img src="assets/trendcoin.png" alt="TrendCoin" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      </div>
-      <div>
-        <div class="project-top">
-          <span class="status-tag status-pre">Pre-launch</span>
-          <span class="project-title">TrendCoin</span>
-        </div>
-        <div class="feature-list">
-          <span class="feature-item">✔ BNB Chain</span>
-          <span class="feature-item">✔ Fixed Supply (37M)</span>
-          <span class="feature-item">✔ Community-driven</span>
-          <span class="feature-item">✔ Staged Liquidity Release</span>
-        </div>
-        <div class="project-block">
-          <span class="k">The Vision</span>
-          <p class="v">A token project deployed on BNB Chain, built from the ground up — branding, tokenomics, and a staged liquidity release strategy.</p>
-        </div>
-        <div class="project-block">
-          <span class="k">Branding &amp; Token Concept</span>
-          <p class="v">TREND is a fixed-supply digital currency on BNB Smart Chain. Built on simplicity and transparency — 37,000,000 tokens, forever. No hidden minting, no transaction tax, no tricks. Designed to grow into a community-driven currency for real-world use, one honest step at a time.</p>
-        </div>
-        <div class="project-block">
-          <span class="k">Current Roadmap</span>
-          <p class="v">Presale fundraising in progress, targeting a launch on PancakeSwap in November 2026.</p>
-        </div>
-        <div class="project-block">
-          <span class="k">Contract Address</span>
-          <p class="v" style="font-family:var(--mono); font-size:.85rem; word-break:break-all;">0xeF8248AbF938B4D0A253007D7F96Aad9B8E9eb10</p>
-        </div>
-        <div class="project-block">
-          <span class="k">Technologies</span>
-          <div class="tech-pills">
-            <span class="tech-pill">BNB Chain</span>
-            <span class="tech-pill">Solidity</span>
-            <span class="tech-pill">PancakeSwap</span>
-          </div>
-        </div>
-        <div class="project-links">
-          <a href="https://bscscan.com/token/0xeF8248AbF938B4D0A253007D7F96Aad9B8E9eb10" target="_blank">View on BscScan →</a>
-          <a href="#" class="case-study-btn" data-target="case-trendcoin">View Case Study →</a>
-        </div>
+      <div class="tool-card reveal">
+        <span class="tool-status"><span class="dot"></span>Live</span>
+        <h3>QR Generator</h3>
+        <p>Create QR codes for links, text, email, phone, and Wi-Fi — instantly, with no tracking.</p>
+        <a href="tools/qr-generator.html" class="tool-link">Open tool →</a>
       </div>
     </div>
   </section>
 
-  <!-- CASE STUDY TEMPLATES (hidden, populate modal on click) -->
-  <template id="case-image-suite">
-    <span class="section-eyebrow">Case Study</span>
-    <h3 class="modal-title">Image Suite</h3>
-    <div class="project-block"><span class="k">The Problem</span><p class="v">[What specific pain point sent you looking for this — a slow tool, a privacy concern, one too many ad-covered converters?]</p></div>
-    <div class="project-block"><span class="k">The Challenge</span><p class="v">[The hardest technical or design constraint — e.g. doing conversion without a server, handling large batches without freezing the browser]</p></div>
-    <div class="project-block"><span class="k">How I Built It</span><p class="v">[Walk through the build — Canvas API for conversion, how the queue/batch system works, how compression is handled]</p></div>
-    <div class="project-block"><span class="k">Challenges</span><p class="v">[A specific bug or edge case you had to solve]</p></div>
-    <div class="project-block"><span class="k">AI Workflow</span><p class="v">[How you used AI tools while building this — what you asked for, what you changed yourself]</p></div>
-    <div class="project-block"><span class="k">Lessons Learned</span><p class="v">[The real takeaway]</p></div>
-    <div class="project-block"><span class="k">Future Improvements</span><p class="v">[What's next for this tool]</p></div>
-  </template>
-
-  <template id="case-pdf-suite">
-    <span class="section-eyebrow">Case Study</span>
-    <h3 class="modal-title">PDF Suite</h3>
-    <div class="project-block"><span class="k">The Problem</span><p class="v">[What sent you looking for this tool]</p></div>
-    <div class="project-block"><span class="k">The Challenge</span><p class="v">[The hardest part — e.g. page-range parsing, image-to-PDF layout logic]</p></div>
-    <div class="project-block"><span class="k">How I Built It</span><p class="v">[Walk through merge / split / image-to-PDF implementation]</p></div>
-    <div class="project-block"><span class="k">Challenges</span><p class="v">[A specific bug or edge case]</p></div>
-    <div class="project-block"><span class="k">AI Workflow</span><p class="v">[How AI tools fit into building this]</p></div>
-    <div class="project-block"><span class="k">Lessons Learned</span><p class="v">[The real takeaway]</p></div>
-    <div class="project-block"><span class="k">Future Improvements</span><p class="v">[What's next]</p></div>
-  </template>
-
-  <template id="case-trendcoin">
-    <span class="section-eyebrow">Case Study</span>
-    <h3 class="modal-title">TrendCoin</h3>
-    <div class="project-block"><span class="k">The Vision</span><p class="v">[Why you started this — what gap or opportunity you saw]</p></div>
-    <div class="project-block"><span class="k">The Challenge</span><p class="v">[Tokenomics design, liquidity strategy, or technical deployment challenge]</p></div>
-    <div class="project-block"><span class="k">How I Built It</span><p class="v">[Deployment on BNB Chain, contract design, staged liquidity release approach]</p></div>
-    <div class="project-block"><span class="k">Lessons Learned</span><p class="v">[What building a token project taught you]</p></div>
-    <div class="project-block"><span class="k">Future Improvements</span><p class="v">[Roadmap toward the November 2026 launch]</p></div>
-  </template>
-
-  <!-- CASE STUDY MODAL -->
-  <div class="modal-overlay" id="caseModalOverlay">
-    <div class="modal-box">
-      <button class="modal-close" id="modalClose" aria-label="Close case study">×</button>
-      <div id="modalBody"></div>
-    </div>
-  </div>
-
-  <!-- SKILLS -->
-  <section class="wrap" id="skills">
-    <div class="section-head reveal">
-      <span class="section-eyebrow">Skills</span>
-      <h2 class="section-title">Grouped by what they're for.</h2>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-cat reveal">
-        <div class="cat-title">AI Tools</div>
-        <ul class="skill-list">
-          <li>ChatGPT</li>
-          <li>AI-assisted development</li>
-        </ul>
+  <section class="wrap" id="lab">
+    <div class="lab-box reveal">
+      <div>
+        <span class="lab-eyebrow">Innovation Lab</span>
+        <h2>TREND — a transparent, fixed-supply token.</h2>
+        <p>37,000,000 TREND on BNB Smart Chain. No hidden minting, no transaction tax, built in the open on PancakeSwap.</p>
       </div>
-      <div class="skill-cat reveal">
-        <div class="cat-title">Web</div>
-        <ul class="skill-list">
-          <li>AI-assisted Web Development</li>
-          <li>WordPress (Beginner)</li>
-        </ul>
-      </div>
-      <div class="skill-cat reveal">
-        <div class="cat-title">Productivity</div>
-        <ul class="skill-list">
-          <li>Google Sheets</li>
-          <li>Internet research</li>
-          <li>Fast typing</li>
-        </ul>
-      </div>
-      <div class="skill-cat reveal">
-        <div class="cat-title">Marketing</div>
-        <ul class="skill-list">
-          <li>Basic digital advertising</li>
-        </ul>
-      </div>
-      <div class="skill-cat reveal">
-        <div class="cat-title">Creative</div>
-        <ul class="skill-list">
-          <li>Basic video editing</li>
-        </ul>
-      </div>
-      <div class="skill-cat reveal">
-        <div class="cat-title">Currently Learning</div>
-        <ul class="skill-list">
-          <li>Cybersecurity fundamentals</li>
-          <li>Linux (Kali) environments</li>
-        </ul>
-      </div>
+      <a href="https://trend-website-six.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary">Visit TREND ↗</a>
     </div>
   </section>
 
-  <!-- JOURNEY -->
   <section class="wrap" id="journey">
     <div class="section-head reveal">
-      <span class="section-eyebrow">Learning Journey</span>
+      <span class="section-eyebrow">Journey</span>
       <h2 class="section-title">How I got here.</h2>
     </div>
     <div class="timeline">
-      <div class="tl-item reveal">
-        <div class="tl-year">2023</div>
-        <div class="tl-title">Commerce background</div>
-        <p class="tl-desc">Started in commerce studies — the foundation, not the plan.</p>
-      </div>
       <div class="tl-item reveal">
         <div class="tl-year">2024</div>
         <div class="tl-title">AI exploration</div>
@@ -754,16 +327,15 @@
       </div>
       <div class="tl-item reveal">
         <div class="tl-year">2026</div>
-        <div class="tl-title">Portfolio, TrendCoin, and a remote career</div>
-        <p class="tl-desc">Building this portfolio, developing TrendCoin toward its November launch, and exploring cybersecurity — while looking for a remote role.</p>
+        <div class="tl-title">Multi-page portfolio, TREND, and a remote career</div>
+        <p class="tl-desc">Rebuilt this site as a proper product hub, developing TREND toward its November launch, and exploring cybersecurity — while looking for a remote role.</p>
       </div>
     </div>
   </section>
 
-  <!-- RESUME -->
   <section class="wrap" id="resume">
     <div class="resume-box reveal">
-      <div class="resume-left">
+      <div>
         <h2 class="section-title">Need a quick overview?</h2>
         <p class="section-desc" style="margin-top:8px;">One PDF, everything above, no scrolling required.</p>
         <div class="resume-links">
@@ -775,52 +347,30 @@
     </div>
   </section>
 
-  <!-- BEYOND THE CODE -->
-  <section class="wrap beyond-section">
-    <div class="beyond-box reveal">
-      <span class="section-eyebrow">Beyond the Code</span>
-      <p class="beyond-text">Outside of building software, I'm interested in AI, finance, blockchain technology, digital products, and understanding how businesses grow through technology.</p>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
   <section class="wrap" id="contact">
     <div class="section-head reveal">
       <span class="section-eyebrow">Contact</span>
       <h2 class="section-title">Let's build something useful.</h2>
     </div>
     <div class="contact-grid">
-      <div class="contact-info reveal">
-        <div class="info-row">
-          <span class="k">Email</span>
-          <span class="v"><a href="mailto:neerajnandan111@gmail.com">neerajnandan111@gmail.com</a></span>
-        </div>
-        <div class="info-row">
-          <span class="k">LinkedIn</span>
-          <span class="v"><a href="https://www.linkedin.com/in/neeraj-kn" target="_blank">linkedin.com/in/neeraj-kn</a></span>
-        </div>
-        <div class="info-row">
-          <span class="k">GitHub</span>
-          <span class="v"><a href="https://github.com/neeraj-kn" target="_blank">github.com/neeraj-kn</a></span>
-        </div>
+      <div class="reveal">
+        <div class="info-row"><span class="k">Email</span><span class="v"><a href="mailto:neerajnandan111@gmail.com">neerajnandan111@gmail.com</a></span></div>
+        <div class="info-row"><span class="k">LinkedIn</span><span class="v"><a href="https://www.linkedin.com/in/neeraj-kn" target="_blank">linkedin.com/in/neeraj-kn</a></span></div>
+        <div class="info-row"><span class="k">GitHub</span><span class="v"><a href="https://github.com/neeraj-kn" target="_blank">github.com/neeraj-kn</a></span></div>
       </div>
-      <form class="contact-form reveal"
-      id="contactForm"
-      action="https://formspree.io/f/mkolpnnk"
-      method="POST">
+      <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/mkolpnnk" method="POST">
         <input type="text" name="name" placeholder="Name" required>
         <input type="email" name="email" placeholder="Email" required>
         <textarea name="message" placeholder="Message" required></textarea>
         <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send Message</button>
-        <span class="form-note">// wire this to Formspree, Resend, or a serverless function once hosted</span>
+        <span class="form-note">// wired to Formspree</span>
       </form>
     </div>
   </section>
 
-  <!-- BUILD PHILOSOPHY -->
   <section class="wrap philosophy-section">
     <div class="philosophy-box reveal">
-      <span class="section-eyebrow">Build Philosophy</span>
+      <span class="section-eyebrow" style="display:block; text-align:center;">Build Philosophy</span>
       <p class="philosophy-quote">I don't wait until I know everything before starting.<br>I build. I learn. I improve.<br><span class="accent-text">Then I build again.</span></p>
     </div>
   </section>
@@ -837,42 +387,32 @@
 </footer>
 
 <script>
-  // typed build-log line
   const lines = [
     "refactoring Image Suite...",
     "wiring up PDF Suite converter...",
+    "generating QR codes offline...",
+    "shipping TREND toward November launch...",
     "learning Kali Linux fundamentals...",
-    "shipping TrendCoin toward November launch...",
-    "helping businesses solve problems...",
-    "deploying portfolio to Vercel...",
-    "polishing this portfolio..."
+    "deploying portfolio to Vercel..."
   ];
   const typedEl = document.getElementById('typed');
   let li = 0, ci = 0, deleting = false;
   function typeLoop(){
     const current = lines[li];
-    if(!deleting){
-      ci++;
-      typedEl.textContent = current.slice(0, ci);
+    if(!deleting){ ci++; typedEl.textContent = current.slice(0, ci);
       if(ci === current.length){ deleting = true; setTimeout(typeLoop, 1400); return; }
-    } else {
-      ci--;
-      typedEl.textContent = current.slice(0, ci);
+    } else { ci--; typedEl.textContent = current.slice(0, ci);
       if(ci === 0){ deleting = false; li = (li+1) % lines.length; }
     }
     setTimeout(typeLoop, deleting ? 28 : 42);
   }
   typeLoop();
 
-  // scroll reveal
   const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); }
-    });
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); } });
   }, {threshold:0.12});
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-  // mobile nav toggle
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.querySelector('.nav-links');
   navToggle.addEventListener('click', ()=>{
@@ -880,60 +420,22 @@
     navLinks.style.display = open ? 'none' : 'flex';
     navLinks.style.flexDirection = 'column';
     navLinks.style.position = 'absolute';
-    navLinks.style.top = '56px';
-    navLinks.style.right = '24px';
+    navLinks.style.top = '56px'; navLinks.style.right = '24px';
     navLinks.style.background = 'var(--bg-panel)';
     navLinks.style.border = '1px solid var(--border)';
     navLinks.style.borderRadius = '10px';
-    navLinks.style.padding = '16px 20px';
-    navLinks.style.gap = '16px';
+    navLinks.style.padding = '16px 20px'; navLinks.style.gap = '16px';
   });
 
-  // case study modal
-  const overlay = document.getElementById('caseModalOverlay');
-  const modalBody = document.getElementById('modalBody');
-  const modalClose = document.getElementById('modalClose');
-  document.querySelectorAll('.case-study-btn').forEach(btn=>{
-    btn.addEventListener('click', function(e){
-      e.preventDefault();
-      const tpl = document.getElementById(this.dataset.target);
-      if(!tpl) return;
-      modalBody.innerHTML = tpl.innerHTML;
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-  function closeModal(){
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  modalClose.addEventListener('click', closeModal);
-  overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeModal(); });
-  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
-
-  // Formspree contact form
   document.getElementById("contactForm").addEventListener("submit", async function(e) {
     e.preventDefault();
-    const form=this;
-    const data=new FormData(form);
+    const form=this; const data=new FormData(form);
     try{
-      const response=await fetch(form.action,{
-        method:"POST",
-        body:data,
-        headers:{"Accept":"application/json"}
-      });
-      if(response.ok){
-        alert("✅ Thank you! Your message has been sent successfully.");
-        form.reset();
-      }else{
-        alert("❌ Failed to send your message. Please try again.");
-      }
-    }catch(err){
-      alert("❌ Something went wrong. Please try again.");
-    }
+      const response=await fetch(form.action,{method:"POST", body:data, headers:{"Accept":"application/json"}});
+      if(response.ok){ alert("✅ Thank you! Your message has been sent successfully."); form.reset(); }
+      else{ alert("❌ Failed to send your message. Please try again."); }
+    }catch(err){ alert("❌ Something went wrong. Please try again."); }
   });
-
 </script>
-
 </body>
 </html>
