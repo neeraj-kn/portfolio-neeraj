@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Generator – Create QR Codes Online | Free QR Code Generator</title>
+<meta name="description" content="Free QR code generator. Create QR codes for links, text, email, phone numbers, and Wi-Fi instantly in your browser. No uploads, no tracking, 100% private.">
+
+<!-- xxxxxx -->
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "QR Generator",
+  "url": "https://neerajnandan.com/qr-generator",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "description": "Free browser-based QR code generator for links, text, email, phone numbers, and Wi-Fi with no uploads.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+<style>
+  :root {
+    --bg:             #0A0A0F;
+    --surface:        #13131a;
+    --surface-2:      #1a1a24;
+    --surface-3:      #1f1f2e;
+    --border:         rgba(255,255,255,0.07);
+    --border-hover:   rgba(255,255,255,0.18);
+
+    --accent:         #a78bfa;
+    --accent-dim:     rgba(167,139,250,0.12);
+    --accent-glow:    rgba(167,139,250,0.28);
+    --accent-border:  rgba(167,139,250,0.25);
+
+    --secondary:      #60a5fa;
+    --secondary-dim:  rgba(96,165,250,0.10);
+    --secondary-border: rgba(96,165,250,0.22);
+
+    --text-primary:   #eeeef2;
+    --text-secondary: rgba(238,238,242,0.45);
+    --text-tertiary:  rgba(238,238,242,0.25);
+    --red:            #f87171;
+    --red-dim:        rgba(248,113,113,0.10);
+    --red-border:     rgba(248,113,113,0.22);
+    --green:          #4ade80;
+    --green-dim:      rgba(74,222,128,0.10);
+    --green-border:   rgba(74,222,128,0.22);
+
+    --radius:    16px;
+    --radius-sm: 10px;
+    --mono: 'DM Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--sans);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px 90px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .bg-video {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -3;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bg-video { display: none; }
+  }
+
+  .video-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(10,10,15,0.65);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    z-index: -2;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.016) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.016) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 500px;
+    background: radial-gradient(ellipse, rgba(167,139,250,0.09) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .wrapper {
+    width: 100%; max-width: 580px;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.55s cubic-bezier(.22,1,.36,1) both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(24px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  /* ── Header ── */
+  .header { margin-bottom: 44px; }
+
+  .logo-row {
+    display: flex; align-items: center;
+    gap: 12px; margin-bottom: 14px;
+  }
+
+  .logo-link { display: block; flex-shrink: 0; text-decoration: none; }
+
+  .logo-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(167,139,250,0.3);
+    box-shadow: 0 0 0 4px rgba(167,139,250,0.08);
+    transition: box-shadow 0.25s, border-color 0.25s, transform 0.22s;
+    cursor: pointer;
+  }
+
+  .logo-link:hover .logo-icon {
+    border-color: rgba(167,139,250,0.65);
+    box-shadow: 0 0 0 6px rgba(167,139,250,0.16), 0 0 24px rgba(167,139,250,0.24);
+    transform: scale(1.04);
+  }
+
+  .logo-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .logo-mark {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .logo-mark:hover { color: var(--accent); }
+
+  .logo-sep { width: 1px; height: 14px; background: var(--border-hover); }
+
+  .badge {
+    display: inline-flex; align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 11px; font-weight: 500;
+    color: var(--secondary);
+    background: var(--secondary-dim);
+    border: 1px solid var(--secondary-border);
+    border-radius: 100px;
+    padding: 4px 10px;
+  }
+
+  .badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--secondary);
+    border-radius: 50%;
+  }
+
+  h1 {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── Card ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 32px;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.03),
+                0 24px 64px rgba(0,0,0,0.5);
+  }
+
+  /* ── Content Type Tabs ── */
+  .type-row {
+    display: flex; gap: 6px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .type-row::-webkit-scrollbar { display: none; }
+
+  .type-btn {
+    font-family: var(--mono);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--text-secondary);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.18s;
+    flex-shrink: 0;
+  }
+
+  .type-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+
+  .type-btn.active {
+    background: var(--accent-dim);
+    border-color: var(--accent-border);
+    color: var(--accent);
+  }
+
+  /* ── Field Groups ── */
+  .field-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
+  .field-group:last-of-type { margin-bottom: 20px; }
+
+  .field-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+
+  .field-input, textarea.field-input {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 11px 14px;
+    color: var(--text-primary);
+    font-family: var(--mono);
+    font-size: 13px;
+    width: 100%;
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .field-input::placeholder { color: var(--text-tertiary); }
+
+  .field-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-dim);
+  }
+
+  .field-row { display: grid; grid-template-columns: 2fr 1fr; gap: 10px; }
+
+  .checkbox-row {
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .checkbox-row input { accent-color: var(--accent); width: 14px; height: 14px; cursor: pointer; }
+
+  .hidden-group { display: none; }
+  .hidden-group.active { display: flex; flex-direction: column; }
+
+  /* ── QR Preview ── */
+  .preview-box {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    min-height: 260px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 10px;
+    padding: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .preview-placeholder {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 10px;
+  }
+
+  .preview-placeholder .drop-icon {
+    width: 44px; height: 44px;
+    background: var(--surface-3);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .preview-placeholder .drop-icon svg { width: 20px; height: 20px; stroke: var(--text-secondary); }
+
+  .preview-placeholder-label { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+  .preview-placeholder-hint { font-family: var(--mono); font-size: 11px; color: var(--text-tertiary); }
+
+  #qrCanvas {
+    border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+    background: #fff;
+  }
+
+  /* ── Settings ── */
+  .settings-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .setting-group { display: flex; flex-direction: column; gap: 7px; }
+
+  .setting-label {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--text-tertiary); text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+
+  select {
+    width: 100%;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 11px 14px;
+    color: var(--text-primary);
+    font-family: var(--sans); font-size: 13px;
+    cursor: pointer; outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='rgba(238,238,242,0.3)' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    transition: border-color 0.2s;
+  }
+
+  select:focus { border-color: var(--accent); }
+  select:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* ── Color Pickers ── */
+  .color-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .color-field {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    transition: border-color 0.2s;
+  }
+
+  .color-field:focus-within { border-color: var(--accent); }
+
+  .color-field input[type="color"] {
+    width: 26px; height: 26px;
+    border: none; border-radius: 6px;
+    padding: 0; background: none;
+    cursor: pointer; flex-shrink: 0;
+  }
+
+  .color-field input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+  .color-field input[type="color"]::-webkit-color-swatch { border: 1px solid var(--border); border-radius: 6px; }
+
+  .color-field input[type="text"] {
+    background: none; border: none; outline: none;
+    color: var(--text-primary);
+    font-family: var(--mono); font-size: 12px;
+    width: 100%;
+  }
+
+  /* ── Logo Upload ── */
+  .logo-section { margin-bottom: 20px; }
+
+  .logo-upload {
+    display: flex; align-items: center; gap: 12px;
+    border: 1.5px dashed rgba(255,255,255,0.11);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .logo-upload:hover, .logo-upload.dragover {
+    border-color: var(--accent);
+    background: var(--accent-dim);
+  }
+
+  .logo-upload input { display: none; }
+
+  .logo-thumb {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: var(--surface-3);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .logo-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .logo-thumb svg { width: 16px; height: 16px; stroke: var(--text-secondary); }
+
+  .logo-upload-text { flex: 1; }
+  .logo-upload-label { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+  .logo-upload-hint { font-family: var(--mono); font-size: 10px; color: var(--text-tertiary); margin-top: 2px; }
+
+  .logo-remove {
+    width: 24px; height: 24px;
+    background: var(--surface-3);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: none;
+    align-items: center; justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .logo-remove.visible { display: flex; }
+  .logo-remove:hover { background: var(--red-dim); border-color: var(--red-border); }
+  .logo-remove svg { width: 9px; height: 9px; stroke: var(--text-secondary); }
+  .logo-remove:hover svg { stroke: var(--red); }
+
+  .logo-size-group { margin-top: 14px; }
+
+  /* ── Slider (shared) ── */
+  .slider-header {
+    display: flex; justify-content: space-between;
+    align-items: center; margin-bottom: 8px;
+  }
+
+  .slider-label {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--text-tertiary); text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+
+  .slider-value { font-family: var(--mono); font-size: 13px; color: var(--accent); font-weight: 500; }
+
+  input[type="range"] {
+    width: 100%; height: 6px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  input[type="range"]:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px; height: 18px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid var(--surface);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(167,139,250,0.4);
+    transition: transform 0.15s;
+  }
+
+  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 18px; height: 18px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid var(--surface);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(167,139,250,0.4);
+  }
+
+  /* ── Status ── */
+  .status {
+    display: none; align-items: center; gap: 9px;
+    padding: 12px 14px; border-radius: var(--radius-sm);
+    font-size: 13px; font-weight: 500;
+    margin-bottom: 16px;
+    animation: itemIn 0.2s ease both;
+  }
+
+  @keyframes itemIn {
+    from { opacity:0; transform: translateY(-3px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  .status.ready {
+    display: flex;
+    background: var(--secondary-dim); border: 1px solid var(--secondary-border);
+    color: var(--secondary);
+  }
+
+  .status.success {
+    display: flex;
+    background: var(--green-dim); border: 1px solid var(--green-border);
+    color: var(--green);
+  }
+
+  .status.error {
+    display: flex;
+    background: var(--red-dim); border: 1px solid var(--red-border);
+    color: var(--red);
+  }
+
+  .status svg { width: 15px; height: 15px; stroke: currentColor; flex-shrink: 0; }
+
+  /* ── Buttons ── */
+  .btn-row { display: flex; gap: 10px; margin-bottom: 16px; }
+
+  .btn {
+    flex: 1;
+    padding: 14px 18px;
+    border: none; border-radius: var(--radius-sm);
+    font-family: var(--sans); font-size: 14px;
+    font-weight: 700; letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: center;
+    justify-content: center; gap: 7px;
+  }
+
+  .btn-primary { background: var(--accent); color: #0d0d12; }
+
+  .btn-primary:hover:not(:disabled) {
+    background: #b99ffb;
+    box-shadow: 0 0 28px var(--accent-glow);
+  }
+
+  .btn-primary:disabled {
+    background: var(--surface-2); color: var(--text-tertiary);
+    cursor: not-allowed; box-shadow: none;
+  }
+
+  .btn-secondary {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    background: var(--surface-3);
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+  }
+
+  .btn-secondary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .btn svg { width: 15px; height: 15px; stroke: currentColor; flex-shrink: 0; }
+
+  /* ── Details / FAQ ── */
+  details {
+    margin-top: 20px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+
+  summary {
+    cursor: pointer;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+    user-select: none;
+  }
+
+  summary:hover { color: var(--accent); }
+
+  details p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); margin-top: 12px; }
+  details p + p { margin-top: 8px; }
+
+  /* ── Keyboard Shortcuts Hint ── */
+  .shortcuts-hint {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-align: center;
+    margin-top: 12px;
+    padding: 8px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+
+  .shortcuts-hint kbd {
+    display: inline-block;
+    padding: 2px 6px;
+    background: var(--surface-3);
+    border: 1px solid var(--border-hover);
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-primary);
+    margin: 0 2px;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 24px;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--text-tertiary);
+  }
+
+  .footer a { color: var(--text-tertiary); text-decoration: none; transition: color 0.2s; }
+  .footer a:hover { color: var(--accent); }
+
+  .hidden { display: none !important; }
+
+  @media (max-width: 480px) {
+    .card { padding: 24px 20px; }
+    h1 { font-size: 30px; }
+    .settings-row, .color-row { grid-template-columns: 1fr; }
+    .field-row { grid-template-columns: 1fr; }
+  }
+
+  .tool-nav{position:sticky; top:0; z-index:100; backdrop-filter:blur(14px); background:rgba(10,10,15,0.82); border-bottom:1px solid var(--border); padding:14px 24px; display:flex; align-items:center; justify-content:space-between;}
+  .tool-nav .trace{position:absolute; bottom:-1px; left:0; right:0; height:1px; background:linear-gradient(90deg, transparent, rgba(201,169,97,0.35) 20%, var(--accent-border) 50%, rgba(201,169,97,0.35) 80%, transparent);}
+  .tool-nav .brand{font-family:"Syne",sans-serif; font-weight:700; font-size:14px; display:flex; align-items:center; gap:8px; color:var(--text-primary);}
+  .tool-nav .brand img{width:22px; height:22px; border-radius:5px;}
+  .tool-nav .back{font-family:"DM Mono",monospace; font-size:12.5px; color:var(--text-secondary); transition:color .2s ease;}
+  .tool-nav .back:hover{color:#C9A961;}
+</style>
+</head>
+
+<body>
+<nav class="tool-nav" style="position:sticky;">
+  <a href="../index.html" class="brand"><img src="../assets/logo.png" alt="Neeraj Nandan logo">NEERAJ NANDAN</a>
+  <a href="../index.html#tools" class="back">&larr; Back to portfolio</a>
+  <div class="trace"></div>
+</nav>
+
+<video class="bg-video" autoplay muted loop playsinline>
+  <source src="background.mp4" type="video/mp4">
+</video>
+<div class="video-overlay"></div>
+
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-row">
+      <a href="https://neerajnandan.com" target="_blank" rel="noopener" class="logo-link" title="Visit neerajnandan.com">
+        <div class="logo-icon">
+          <picture>
+            <source srcset="logo.webp" type="image/webp">
+            <img src="logo.png" alt="Neeraj Nandan">
+          </picture>
+        </div>
+      </a>
+      <a href="https://neerajnandan.com" target="_blank" rel="noopener" class="logo-mark">neerajnandan.com</a>
+      <span class="logo-sep"></span>
+      <div class="badge">Runs 100% in your browser</div>
+    </div>
+    <h1>QR Generator</h1>
+    <p class="subtitle">Create QR codes instantly — no uploads, no tracking.</p>
+  </div>
+
+  <!-- Card -->
+  <div class="card">
+
+    <!-- Content Type Tabs -->
+    <div class="type-row" id="typeRow">
+      <button class="type-btn active" data-type="link">Link</button>
+      <button class="type-btn" data-type="text">Text</button>
+      <button class="type-btn" data-type="email">Email</button>
+      <button class="type-btn" data-type="phone">Phone</button>
+      <button class="type-btn" data-type="wifi">Wi-Fi</button>
+    </div>
+
+    <!-- Link Fields -->
+    <div class="field-group hidden-group active" id="group-link">
+      <label class="field-label">URL</label>
+      <input type="text" class="field-input" id="linkInput" placeholder="https://example.com">
+    </div>
+
+    <!-- Text Fields -->
+    <div class="field-group hidden-group" id="group-text">
+      <label class="field-label">Text</label>
+      <textarea class="field-input" id="textInput" rows="3" placeholder="Type anything you want to encode"></textarea>
+    </div>
+
+    <!-- Email Fields -->
+    <div class="field-group hidden-group" id="group-email">
+      <label class="field-label">Email Address</label>
+      <input type="email" class="field-input" id="emailTo" placeholder="hello@example.com">
+      <label class="field-label" style="margin-top:6px;">Subject (optional)</label>
+      <input type="text" class="field-input" id="emailSubject" placeholder="Subject line">
+      <label class="field-label" style="margin-top:6px;">Message (optional)</label>
+      <textarea class="field-input" id="emailBody" rows="2" placeholder="Message body"></textarea>
+    </div>
+
+    <!-- Phone Fields -->
+    <div class="field-group hidden-group" id="group-phone">
+      <label class="field-label">Phone Number</label>
+      <input type="tel" class="field-input" id="phoneInput" placeholder="+1 555 010 2030">
+    </div>
+
+    <!-- Wi-Fi Fields -->
+    <div class="field-group hidden-group" id="group-wifi">
+      <label class="field-label">Network Name (SSID)</label>
+      <input type="text" class="field-input" id="wifiSsid" placeholder="My Wi-Fi Network">
+      <label class="field-label" style="margin-top:6px;">Password</label>
+      <div class="field-row">
+        <input type="text" class="field-input" id="wifiPass" placeholder="Password">
+        <select id="wifiEnc">
+          <option value="WPA">WPA/WPA2</option>
+          <option value="WEP">WEP</option>
+          <option value="nopass">None</option>
+        </select>
+      </div>
+      <div class="checkbox-row" style="margin-top:8px;">
+        <input type="checkbox" id="wifiHidden">
+        <label for="wifiHidden">Hidden network</label>
+      </div>
+    </div>
+
+    <!-- QR Preview -->
+    <div class="preview-box" id="previewBox">
+      <div class="preview-placeholder" id="placeholder">
+        <div class="drop-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+            <line x1="14" y1="14" x2="14" y2="21"/>
+            <line x1="21" y1="14" x2="21" y2="21"/>
+            <line x1="14" y1="17.5" x2="21" y2="17.5"/>
+          </svg>
+        </div>
+        <span class="preview-placeholder-label">Your QR code will appear here</span>
+        <span class="preview-placeholder-hint">Fill in the details above to generate it</span>
+      </div>
+      <canvas id="qrCanvas" class="hidden"></canvas>
+    </div>
+
+    <!-- Settings -->
+    <div class="settings-row">
+      <div class="setting-group">
+        <label class="setting-label">Size</label>
+        <select id="sizeSelect">
+          <option value="200">200 × 200</option>
+          <option value="300" selected>300 × 300</option>
+          <option value="400">400 × 400</option>
+          <option value="600">600 × 600</option>
+          <option value="1000">1000 × 1000</option>
+        </select>
+      </div>
+      <div class="setting-group">
+        <label class="setting-label">Error Correction</label>
+        <select id="levelSelect">
+          <option value="L">Low</option>
+          <option value="M" selected>Medium</option>
+          <option value="Q">Quartile</option>
+          <option value="H">High (best with logo)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Colors -->
+    <div class="color-row">
+      <div class="color-field">
+        <input type="color" id="fgColorPicker" value="#0d0d12">
+        <input type="text" id="fgColorText" value="#0d0d12" maxlength="7">
+      </div>
+      <div class="color-field">
+        <input type="color" id="bgColorPicker" value="#ffffff">
+        <input type="text" id="bgColorText" value="#ffffff" maxlength="7">
+      </div>
+    </div>
+
+    <!-- Logo Upload -->
+    <div class="logo-section">
+      <div class="logo-upload" id="logoUpload">
+        <div class="logo-thumb" id="logoThumb">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="3"/>
+            <circle cx="9" cy="9" r="2"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+        </div>
+        <div class="logo-upload-text">
+          <div class="logo-upload-label">Add a logo (optional)</div>
+          <div class="logo-upload-hint">Placed in the center · use high error correction</div>
+        </div>
+        <div class="logo-remove" id="logoRemove" title="Remove logo">
+          <svg viewBox="0 0 10 10" fill="none" stroke-linecap="round"><line x1="1" y1="1" x2="9" y2="9"/><line x1="9" y1="1" x2="1" y2="9"/></svg>
+        </div>
+        <input type="file" id="logoInput" accept="image/*">
+      </div>
+      <div class="logo-size-group hidden" id="logoSizeGroup">
+        <div class="slider-header">
+          <label class="slider-label">Logo Size</label>
+          <span class="slider-value" id="logoSizeValue">20%</span>
+        </div>
+        <input type="range" id="logoSizeSlider" min="10" max="30" value="20">
+      </div>
+    </div>
+
+    <!-- Status -->
+    <div class="status" id="status"></div>
+
+    <!-- Buttons -->
+    <div class="btn-row">
+      <button class="btn btn-primary" id="downloadBtn" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download PNG
+      </button>
+      <button class="btn btn-secondary" id="copyBtn" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+        </svg>
+        Copy
+      </button>
+      <button class="btn btn-secondary" id="resetBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+        Clear
+      </button>
+    </div>
+
+    <!-- FAQ -->
+    <details>
+      <summary>About this tool & FAQ</summary>
+      <p>This free QR code generator creates codes directly in your browser without sending your data to a server. All processing happens locally on your device, so links, contact details, and Wi-Fi credentials never leave your machine.</p>
+      <p>Supports links, plain text, email, phone numbers, and Wi-Fi networks, with adjustable size, error correction, colors, and an optional center logo.</p>
+    </details>
+
+    <!-- Keyboard Shortcuts Hint -->
+    <div class="shortcuts-hint">
+      <kbd>Esc</kbd> Clear
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>© 2025 Neeraj Nandan</span>
+    <a href="https://neerajnandan.com" target="_blank" rel="noopener">More tools →</a>
+  </div>
+
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+//  ELEMENT REFS
+// ═══════════════════════════════════════════════
+const typeRow = document.getElementById("typeRow");
+const groups = {
+  link: document.getElementById("group-link"),
+  text: document.getElementById("group-text"),
+  email: document.getElementById("group-email"),
+  phone: document.getElementById("group-phone"),
+  wifi: document.getElementById("group-wifi"),
+};
+
+const linkInput = document.getElementById("linkInput");
+const textInput = document.getElementById("textInput");
+const emailTo = document.getElementById("emailTo");
+const emailSubject = document.getElementById("emailSubject");
+const emailBody = document.getElementById("emailBody");
+const phoneInput = document.getElementById("phoneInput");
+const wifiSsid = document.getElementById("wifiSsid");
+const wifiPass = document.getElementById("wifiPass");
+const wifiEnc = document.getElementById("wifiEnc");
+const wifiHidden = document.getElementById("wifiHidden");
+
+const previewBox = document.getElementById("previewBox");
+const placeholder = document.getElementById("placeholder");
+const canvas = document.getElementById("qrCanvas");
+
+const sizeSelect = document.getElementById("sizeSelect");
+const levelSelect = document.getElementById("levelSelect");
+
+const fgColorPicker = document.getElementById("fgColorPicker");
+const fgColorText = document.getElementById("fgColorText");
+const bgColorPicker = document.getElementById("bgColorPicker");
+const bgColorText = document.getElementById("bgColorText");
+
+const logoUpload = document.getElementById("logoUpload");
+const logoInput = document.getElementById("logoInput");
+const logoThumb = document.getElementById("logoThumb");
+const logoRemove = document.getElementById("logoRemove");
+const logoSizeGroup = document.getElementById("logoSizeGroup");
+const logoSizeSlider = document.getElementById("logoSizeSlider");
+const logoSizeValue = document.getElementById("logoSizeValue");
+
+const statusDiv = document.getElementById("status");
+const downloadBtn = document.getElementById("downloadBtn");
+const copyBtn = document.getElementById("copyBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+let currentType = "link";
+let logoImage = null;
+
+// ═══════════════════════════════════════════════
+//  TYPE SWITCHING
+// ═══════════════════════════════════════════════
+typeRow.addEventListener("click", (e) => {
+  const btn = e.target.closest(".type-btn");
+  if (!btn) return;
+  currentType = btn.dataset.type;
+  [...typeRow.children].forEach(b => b.classList.toggle("active", b === btn));
+  Object.entries(groups).forEach(([key, el]) => el.classList.toggle("active", key === currentType));
+  generate();
+});
+
+// ═══════════════════════════════════════════════
+//  DEBOUNCE
+// ═══════════════════════════════════════════════
+let debounceTimer;
+function debouncedGenerate() {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(generate, 180);
+}
+
+[linkInput, textInput, emailTo, emailSubject, emailBody, phoneInput, wifiSsid, wifiPass]
+  .forEach(el => el.addEventListener("input", debouncedGenerate));
+[wifiEnc, wifiHidden, sizeSelect, levelSelect].forEach(el => el.addEventListener("change", generate));
+
+// ═══════════════════════════════════════════════
+//  COLOR SYNC
+// ═══════════════════════════════════════════════
+function syncColor(picker, text) {
+  picker.addEventListener("input", () => { text.value = picker.value; generate(); });
+  text.addEventListener("input", () => {
+    let v = text.value.trim();
+    if (!v.startsWith("#")) v = "#" + v;
+    if (/^#[0-9a-fA-F]{6}$/.test(v)) { picker.value = v; generate(); }
+  });
+}
+syncColor(fgColorPicker, fgColorText);
+syncColor(bgColorPicker, bgColorText);
+
+// ═══════════════════════════════════════════════
+//  LOGO UPLOAD
+// ═══════════════════════════════════════════════
+logoUpload.onclick = (e) => {
+  if (e.target.closest("#logoRemove")) return;
+  logoInput.click();
+};
+
+logoUpload.ondragover = e => { e.preventDefault(); logoUpload.classList.add("dragover"); };
+logoUpload.ondragleave = () => logoUpload.classList.remove("dragover");
+logoUpload.ondrop = e => {
+  e.preventDefault();
+  logoUpload.classList.remove("dragover");
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith("image/")) loadLogo(file);
+};
+
+logoInput.onchange = e => {
+  const file = e.target.files[0];
+  if (file) loadLogo(file);
+  e.target.value = "";
+};
+
+function loadLogo(file) {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = new Image();
+    img.onload = () => {
+      logoImage = img;
+      logoThumb.innerHTML = `<img src="${e.target.result}" alt="Logo">`;
+      logoRemove.classList.add("visible");
+      logoSizeGroup.classList.remove("hidden");
+      generate();
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+logoRemove.onclick = (e) => {
+  e.stopPropagation();
+  logoImage = null;
+  logoThumb.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>`;
+  logoRemove.classList.remove("visible");
+  logoSizeGroup.classList.add("hidden");
+  generate();
+};
+
+logoSizeSlider.oninput = () => {
+  logoSizeValue.textContent = logoSizeSlider.value + "%";
+  generate();
+};
+
+// ═══════════════════════════════════════════════
+//  CONTENT BUILDING
+// ═══════════════════════════════════════════════
+function escapeWifi(str) {
+  return str.replace(/([\\;,:"])/g, "\\$1");
+}
+
+function buildContent() {
+  if (currentType === "link") {
+    let v = linkInput.value.trim();
+    if (!v) return "";
+    if (!/^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//.test(v)) v = "https://" + v;
+    return v;
+  }
+  if (currentType === "text") {
+    return textInput.value;
+  }
+  if (currentType === "email") {
+    const to = emailTo.value.trim();
+    if (!to) return "";
+    const subject = emailSubject.value.trim();
+    const body = emailBody.value.trim();
+    const params = [];
+    if (subject) params.push("subject=" + encodeURIComponent(subject));
+    if (body) params.push("body=" + encodeURIComponent(body));
+    return "mailto:" + to + (params.length ? "?" + params.join("&") : "");
+  }
+  if (currentType === "phone") {
+    const p = phoneInput.value.trim();
+    if (!p) return "";
+    return "tel:" + p;
+  }
+  if (currentType === "wifi") {
+    const ssid = wifiSsid.value.trim();
+    if (!ssid) return "";
+    const enc = wifiEnc.value;
+    const pass = wifiPass.value;
+    const hidden = wifiHidden.checked ? "true" : "false";
+    let str = `WIFI:T:${enc};S:${escapeWifi(ssid)};`;
+    if (enc !== "nopass") str += `P:${escapeWifi(pass)};`;
+    str += `H:${hidden};;`;
+    return str;
+  }
+  return "";
+}
+
+// ═══════════════════════════════════════════════
+//  ROUNDED RECT HELPER
+// ═══════════════════════════════════════════════
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+
+// ═══════════════════════════════════════════════
+//  QR GENERATION
+// ═══════════════════════════════════════════════
+function generate() {
+  const content = buildContent();
+
+  if (!content) {
+    canvas.classList.add("hidden");
+    placeholder.classList.remove("hidden");
+    downloadBtn.disabled = true;
+    copyBtn.disabled = true;
+    statusDiv.style.display = "none";
+    return;
+  }
+
+  const size = parseInt(sizeSelect.value, 10);
+  const level = levelSelect.value;
+  const fg = fgColorText.value;
+  const bg = bgColorText.value;
+
+  try {
+    new QRious({
+      element: canvas,
+      value: content,
+      size: size,
+      level: level,
+      foreground: fg,
+      background: bg,
+      padding: Math.round(size * 0.04)
+    });
+
+    if (logoImage) {
+      const ctx = canvas.getContext("2d");
+      const pct = parseInt(logoSizeSlider.value, 10) / 100;
+      const logoSize = size * pct;
+      const x = (size - logoSize) / 2;
+      const y = (size - logoSize) / 2;
+      const pad = logoSize * 0.14;
+      ctx.fillStyle = "#ffffff";
+      roundRect(ctx, x - pad, y - pad, logoSize + pad * 2, logoSize + pad * 2, 10);
+      ctx.fill();
+      ctx.drawImage(logoImage, x, y, logoSize, logoSize);
+    }
+
+    canvas.classList.remove("hidden");
+    placeholder.classList.add("hidden");
+    downloadBtn.disabled = false;
+    copyBtn.disabled = false;
+    setStatus("success", "QR code ready");
+
+    if (typeof gtag !== "undefined") {
+      gtag("event", "qr_generated", { "content_type": currentType, "size": size });
+    }
+  } catch (err) {
+    setStatus("error", "Could not generate QR code — try shorter content or lower error correction");
+    downloadBtn.disabled = true;
+    copyBtn.disabled = true;
+  }
+}
+
+// ═══════════════════════════════════════════════
+//  DOWNLOAD / COPY
+// ═══════════════════════════════════════════════
+downloadBtn.onclick = () => {
+  canvas.toBlob((blob) => {
+    if (!blob) return;
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "qr-code.png";
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    if (typeof gtag !== "undefined") gtag("event", "qr_download");
+  }, "image/png");
+};
+
+copyBtn.onclick = async () => {
+  try {
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+    await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+    setStatus("success", "Copied to clipboard");
+  } catch (err) {
+    setStatus("error", "Copy isn't supported in this browser — try downloading instead");
+  }
+};
+
+// ═══════════════════════════════════════════════
+//  RESET
+// ═══════════════════════════════════════════════
+function resetAll() {
+  [linkInput, textInput, emailTo, emailSubject, emailBody, phoneInput, wifiSsid, wifiPass].forEach(el => el.value = "");
+  wifiHidden.checked = false;
+  wifiEnc.value = "WPA";
+  logoImage = null;
+  logoThumb.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>`;
+  logoRemove.classList.remove("visible");
+  logoSizeGroup.classList.add("hidden");
+  generate();
+}
+resetBtn.onclick = resetAll;
+
+// ═══════════════════════════════════════════════
+//  KEYBOARD SHORTCUTS
+// ═══════════════════════════════════════════════
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") e.target.blur();
+    e.preventDefault();
+    resetAll();
+  }
+});
+
+// ═══════════════════════════════════════════════
+//  STATUS
+// ═══════════════════════════════════════════════
+function setStatus(type, msg) {
+  statusDiv.className = "status " + type;
+  statusDiv.style.display = "flex";
+  if (type === "success") {
+    statusDiv.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>${msg}</span>`;
+  } else if (type === "error") {
+    statusDiv.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg><span>${msg}</span>`;
+  }
+}
+
+// Initial state
+statusDiv.style.display = "none";
+</script>
+
+</body>
+</html>
